@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <form action="/movies/search-form" method="post" id="search-form">
+    <h4 class="text-center">Search Movies</h4>
+    <br />
+    <label for="page" class="form-label">Page:</label>
+    <input type="number" id="page" name="page" class="form-control" required />
+    <br />
+
+    <label for="perPage" class="form-label">Items per Page:</label>
+    <input
+      type="number"
+      id="perPage"
+      name="perPage"
+      class="form-control"
+      required
+    />
+    <br />
+
+    <label for="title" class="form-label">Title (optional):</label>
+    <input type="text" id="title" name="title" class="form-control" />
+    <br />
+    <br />
+
+    <button type="submit" class="btn btn-primary">Search</button>
+    <br />
+    <br />
+
+    <b><a href="/users/logout">Logout</a></b>
+
+  </form>
+
+</div>

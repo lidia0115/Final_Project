@@ -1,0 +1,152 @@
+<style>
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  #card-container {
+    width: 70%;
+    margin-top: 3rem;
+  }
+
+  #card-design {
+    margin-bottom: 20px;
+  }
+  h4{
+    color: white;
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+
+</style>
+
+
+<div id="card-container">
+    <b><a href="/users/logout" class="link-secondary">Logout</a></b>
+    <h4 class="text-center">MOVIES</h4> <br>
+  {{#each movies}}
+    {{#each this}}
+      <div class="card" id="card-design">
+        {{#if this.poster}}
+          <img src="{{this.poster}}" class="card-img-top" alt="{{this.title}} Poster" style="height: 450px; width: 400px; margin:auto">
+        {{/if}}
+        <div class="card-body">
+          {{#if this.title}}
+            <h2 class="card-title">{{this.title}}</h2>
+          {{/if}}
+          {{#if this.plot}}
+            <p class="card-text">{{this.plot}}</p>
+          {{/if}}
+          {{#if this.genres}}
+            <p class="card-text"><strong>Genres:</strong> {{#each this.genres}} {{this}} {{#unless @last}}, {{/unless}} {{/each}}</p>
+          {{/if}}
+          {{#if this.runtime}}
+            <p class="card-text"><strong>Runtime:</strong> {{this.runtime}}</p>
+          {{/if}}
+          {{#if this.cast}}
+            <p class="card-text"><strong>Cast:</strong> {{#each this.cast}} {{this}} {{#unless @last}}, {{/unless}} {{/each}}</p>
+          {{/if}}
+          {{#if this.fullplot}}
+            <p class="card-text"><strong>Full Plot:</strong> {{this.fullplot}}</p>
+          {{/if}}
+          
+          {{#if this.languages}}
+            <p class="card-text"><strong>Languages:</strong> {{#each this.languages}} {{this}} {{#unless @last}}, {{/unless}} {{/each}}</p>
+        {{/if}}
+
+        {{#if this.released}}
+            <p class="card-text"><strong>Released:</strong> {{formatDate this.released 'MMMM D, YYYY'}}</p>
+        {{/if}}
+
+
+        {{#if this.directors}}
+            <p class="card-text"><strong>Directors:</strong> {{#each this.directors}} {{this}} {{#unless @last}}, {{/unless}} {{/each}}</p>
+        {{/if}}
+
+        {{#if this.writers}}
+            <p class="card-text"><strong>Writers:</strong> {{#each this.writers}} {{this}} {{#unless @last}}, {{/unless}} {{/each}}</p>
+        {{/if}}
+
+        {{#if this.awards}}
+            <p class="card-text"><strong> Awards:</strong> Wins {{this.awards.wins}}, Nominations: {{this.awards.nominations}}, Text: {{this.awards.text}}</p>
+        {{/if}}
+
+
+        {{#if this.lastupdated}}
+            <p class="card-text"><strong>Last Updated:</strong> {{formatDate this.lastupdated 'MMMM D, YYYY h:mm:ss A'}}</p>
+        {{/if}}
+
+
+        {{#if this.year}}
+            <p class="card-text"><strong> Year:</strong> {{this.year}}</p>
+        {{/if}}
+
+        {{#if this.imdb}}
+            <p class="card-text"><strong> IMDb:</strong> Rating {{this.imdb.rating}}, Votes: {{this.imdb.votes}}, ID: {{this.imdb.id}}</p>
+        {{/if}}
+
+
+        {{#if this.countries}}
+            <p class="card-text"><strong>Countries:</strong> {{#each this.countries}} {{this}} {{#unless @last}}, {{/unless}} {{/each}}</p>
+        {{/if}}
+
+
+        {{#if this.type}}
+            <p class="card-text"><strong> Type:</strong> {{this.type}}</p>
+        {{/if}}
+
+          <div class="mt-3">
+            {{#if this.tomatoes}}
+              <p class="card-text"><strong>Tomatoes:</strong></p>
+              
+              {{#if this.tomatoes.viewer}}
+                    <p class="card-text">Viewer: {{#if this.tomatoes.viewer.rating}}Rating: {{this.tomatoes.viewer.rating}} {{/if}} 
+                    {{#if this.tomatoes.viewer.numReviews}} Number of Reviews: {{this.tomatoes.viewer.numReviews}} {{/if}}
+                    {{#if this.tomatoes.viewer.meter}} Meter: {{this.tomatoes.viewer.meter}} {{/if}}</p>
+                {{/if}}
+
+                {{#if this.tomatoes.critic}}
+                    <p class="card-text">Critic: {{#if this.tomatoes.critic.rating}}Rating: {{this.tomatoes.critic.rating}} {{/if}} 
+                    {{#if this.tomatoes.critic.numReviews}} Number of Reviews: {{this.tomatoes.critic.numReviews}} {{/if}}
+                    {{#if this.tomatoes.critic.meter}} Meter: {{this.tomatoes.critic.meter}} {{/if}}</p>
+                {{/if}}
+
+                {{#if this.tomatoes.dvd}}
+                    <p class="card-text"> DVD Released: {{formatDate this.tomatoes.dvd 'MMMM D, YYYY'}}</p>
+                {{/if}}
+
+                {{#if this.tomatoes.website}}
+                    <p class="card-link"> Website: <a href="{{ this.tomatoes.website }}" target="_blank" class="link-secondary">{{ this.tomatoes.website }}</a></p>
+                {{/if}}
+
+                {{#if this.tomatoes.production}}
+                    <p class="card-text"> Production: {{this.tomatoes.production}}</p>
+                {{/if}}
+
+                {{#if this.tomatoes.fresh}}
+                    <p class="card-text"> Fresh: {{this.tomatoes.fresh}}</p>
+                {{/if}}
+
+                {{#if this.tomatoes.rotten}}
+                    <p class="card-text"> Rotten: {{this.tomatoes.rotten}}</p>
+                {{/if}}
+
+                {{#if this.tomatoes.lastUpdated}}
+                    <p class="card-text">Last Updated: {{formatDate this.tomatoes.lastUpdated 'MMMM D, YYYY h:mm:ss A'}}</p>
+                {{/if}}
+
+            {{/if}}
+          </div>
+
+          {{#if this.num_mflix_comments}}
+            <p class="card-text"><strong>Number of Comments:</strong> {{this.num_mflix_comments}}</p>
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+  {{/each}}
+</div>
+
